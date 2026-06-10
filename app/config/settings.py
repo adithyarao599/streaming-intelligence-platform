@@ -1,16 +1,19 @@
-from dotenv import load_dotenv
 import os
+from dataclasses import dataclass
+
+from dotenv import load_dotenv
 
 load_dotenv()
 
-POSTGRES_USER = os.getenv("POSTGRES_USER")
 
-POSTGRES_PASSWORD = os.getenv("POSTGRES_PASSWORD")
+@dataclass
+class Settings:
+    POSTGRES_USER: str = os.getenv("POSTGRES_USER")
+    POSTGRES_PASSWORD: str = os.getenv("POSTGRES_PASSWORD")
+    POSTGRES_DB: str = os.getenv("POSTGRES_DB")
+    POSTGRES_HOST: str = os.getenv("POSTGRES_HOST")
+    POSTGRES_PORT: str = os.getenv("POSTGRES_PORT")
+    LOG_LEVEL: str = os.getenv("LOG_LEVEL")
 
-POSTGRES_DB = os.getenv("POSTGRES_DB")
 
-POSTGRES_HOST = os.getenv("POSTGRES_HOST")
-
-POSTGRES_PORT = os.getenv("POSTGRES_PORT")
-
-LOG_LEVEL = os.getenv("LOG_LEVEL")
+settings = Settings()
