@@ -7,6 +7,15 @@ class BusinessRules:
 
             if (dataframe[column] < 0).any():
 
-                raise ValueError(f"Negative values " f"found in {column}")
+                raise ValueError(f"Negative values found in {column}")
+
+        return True
+
+    @staticmethod
+    def validate_streams(dataframe):
+
+        if (dataframe["streams"] < 0).any():
+
+            raise ValueError("Invalid streams")
 
         return True
