@@ -24,6 +24,34 @@ services:
 
       - postgres_data:/var/lib/postgresql/data
 
+  airflow-webserver:
+
+    image: apache/airflow:2.10.0
+
+    container_name: airflow_webserver
+
+    restart: always
+
+    ports:
+
+      - "8080:8080"
+
+    depends_on:
+
+      - postgres
+
+  airflow-scheduler:
+
+    image: apache/airflow:2.10.0
+
+    container_name: airflow_scheduler
+
+    restart: always
+
+    depends_on:
+
+      - postgres
+
 volumes:
 
   postgres_data:
