@@ -1,0 +1,5 @@
+{
+    "model_name": "popularity_model",
+    "mae": 0.13,
+    "r2": 0.89
+}
