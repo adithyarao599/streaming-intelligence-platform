@@ -1,43 +1,38 @@
 name: CI
 
 on:
-
   push:
-
   pull_request:
 
 jobs:
-
   test:
-
     runs-on: ubuntu-latest
 
-    steps:
+    env:
+      POSTGRES_USER: stream_admin
+      POSTGRES_PASSWORD: stream_password
+      POSTGRES_DB: streaming_dw
+      POSTGRES_HOST: localhost
+      POSTGRES_PORT: 5432
+      LOG_LEVEL: INFO
 
+    steps:
       - uses: actions/checkout@v4
 
       - uses: actions/setup-python@v5
-
         with:
-
           python-version: "3.12"
 
       - name: Install
-
         run: |
-
+          python -m pip install --upgrade pip
           pip install -r requirements.txt
-
           pip install black
 
       - name: Formatting Check
-
         run: |
-
           black --check .
 
       - name: Tests
-
         run: |
-
           pytest -v
