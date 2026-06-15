@@ -19,3 +19,9 @@ logs/
 .vscode/
 
 *.db
+
+.pytest_cache/
+
+artifacts/models/
+
+*.pkl

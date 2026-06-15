@@ -9,6 +9,6 @@ class DimCountry(Base):
 
     country_key = Column(Integer, primary_key=True, autoincrement=True)
 
-    country_code = Column(String(5), nullable=False, unique=True)
+    country_code = Column(String(10), nullable=False, unique=True)
 
     country_name = Column(String(100), nullable=False)
